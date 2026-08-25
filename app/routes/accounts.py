@@ -22,7 +22,7 @@ def create_account(payload: AccountCreate):
             VALUES (%s, %s)
             RETURNING id, name, type::text, created_at
             """,
-            (payload.name, payload,type),
+            (payload.name, payload.type),
         ).fetchone()
     return AccountOut(**row, balance=0)
 
